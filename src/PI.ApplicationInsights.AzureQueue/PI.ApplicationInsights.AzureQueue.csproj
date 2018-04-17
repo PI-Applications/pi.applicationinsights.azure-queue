@@ -6,8 +6,9 @@
     <Company>PI Applications A/S</Company>
     <Authors>PI Applications A/S</Authors>
     <Product />
-    <PackageProjectUrl>https://github.com/PI-Applications/pi.applicationinsights</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/PI-Applications/pi.applicationinsights.azure-queue</PackageProjectUrl>
     <PackageTags>ApplicationInsights Azure Storage Queue</PackageTags>
+    <Description>Use this package if you want to monitor status for one or more queues in Azure Storage with Azure Application Insights.</Description>
   </PropertyGroup>
 
   <ItemGroup>
