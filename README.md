@@ -32,8 +32,8 @@ PushInterval | no | Push interval in milliseconds. Default is 60000 (every minut
 ## Metrics
 Name | Description
 --- | ---
-[*MetricPrefix*][*QueueName*] | Approximate message count for primary queue
-[*MetricPrefix*][*QueueName*]-poison | Approximate message count for poison queue
+[*MetricPrefix*]-[*QueueName*] | Approximate message count for primary queue
+[*MetricPrefix*]-[*QueueName*]-poison | Approximate message count for poison queue
 
 ### Example of metrics
 If you add two queues named **new-orders** and **capture-payments**, and use this package with a prefix called **MyWebshop** then you will get the following metrics:
