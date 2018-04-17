@@ -19,9 +19,19 @@ namespace PI.ApplicationInsights.AzureQueue
         public int PushInterval { get; set; }
 
         public List<string> Queues { get; set; }
-        
+
         public AzureQueueMetric(AzureQueueMetricOptions options)
         {
+            // Validate required options
+            if (options.TelemetryClient == null)
+                throw new ArgumentNullException(nameof(options.TelemetryClient));
+            
+            if (string.IsNullOrEmpty(options.MetricPrefix))
+                throw new ArgumentNullException(nameof(options.MetricPrefix));
+
+            if (string.IsNullOrEmpty(options.StorageConnectionString))
+                throw new ArgumentNullException(nameof(options.StorageConnectionString));
+
             _metricPrefix = options.MetricPrefix;
             _telemetryClient = options.TelemetryClient;
 
@@ -56,11 +66,11 @@ namespace PI.ApplicationInsights.AzureQueue
                             await cloudQueue.FetchAttributesAsync();
 
                             // Use ApproximateMessageCount as metric
-                            var telemetryEnqueued = new MetricTelemetry(_metricPrefix + queue, cloudQueue.ApproximateMessageCount ?? 0);
+                            var telemetryEnqueued = new MetricTelemetry(_metricPrefix + "-" + queue, cloudQueue.ApproximateMessageCount ?? 0);
                             _telemetryClient.TrackMetric(telemetryEnqueued);
                         }
                     }
-                    
+
                     // Wait for next push
                     await Task.Delay(PushInterval).ConfigureAwait(continueOnCapturedContext: false);
                 }

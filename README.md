@@ -12,10 +12,10 @@ The following metrics will be pushed to Azure Application Insights:
 ```
 AzureQueueMetric.Use(new AzureQueueMetricOptions
 {
-    MetricPrefix = "myprefix",
+    MetricPrefix = "MyWebshop",
     PushInterval = 120000,
-    Queues = new List<string> { "orders", "payments" },
-    StorageConnectionString = "localhost",
+    Queues = new List<string> { "new-orders", "capture-payments" },
+    StorageConnectionString = "UseDevelopmentStorage=true",
     TelemetryClient = aiClient
 });
 ```
@@ -26,7 +26,7 @@ Property | Required | Description
 Queues | **yes** | List of queues to be monitored. *-poison* queues will be added automatic.
 StorageConnectionString | **yes** | Connection string to Azure Storage
 TelemetryClient | **yes** | Application Insights instance
-MetricPrefix  | no | Prefix for metrics name
+MetricPrefix  | **yes** | Prefix for metrics names
 PushInterval | no | Push interval in milliseconds. Default is 60000 (every minute)
 
 ## Metrics
@@ -36,8 +36,8 @@ Name | Description
 [*MetricPrefix*][*QueueName*]-poison | Approximate message count for poison queue
 
 ### Example of metrics
-If you add two queues named **NewOrders** and **CapturePayment**, and use this package with a prefix called **MyWebshop** then you will get the following metrics:
-- *MyWebshop***NewOrders**
-- *MyWebshop***NewOrders**-poison
-- *MyWebshop***CapturePayment**
-- *MyWebshop***CapturePayment**-poison
+If you add two queues named **new-orders** and **capture-payments**, and use this package with a prefix called **MyWebshop** then you will get the following metrics:
+- *MyWebshop*-**new-orders**
+- *MyWebshop*-**new-orders**-poison
+- *MyWebshop*-**capture-payments**
+- *MyWebshop*-**capture-payments**-poison
