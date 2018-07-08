@@ -1,14 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Company>PI Applications A/S</Company>
+    <Version>1.0.0</Version>
+    <FileVersion>1.0.0</FileVersion>
     <Authors>PI Applications A/S</Authors>
-    <Product />
-    <PackageProjectUrl>https://github.com/PI-Applications/pi.applicationinsights.azure-queue</PackageProjectUrl>
-    <PackageTags>ApplicationInsights Azure Storage Queue</PackageTags>
     <Description>Use this package if you want to monitor status for one or more queues in Azure Storage with Azure Application Insights.</Description>
+    <Copyright>Copyright (c) 2018 PI Applications A/S</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>PI.ApplicationInsights.AzureQueue</PackageId>
+    <PackageVersion>0.0.1</PackageVersion>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>ApplicationInsights Azure Storage Queue</PackageTags>
+    <PackageProjectUrl>https://github.com/PI-Applications/pi.applicationinsights.azure-queue</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
